@@ -23,24 +23,51 @@ document.addEventListener("DOMContentLoaded", () => {
     editBtn.id = `editli${elementIdNum}`
     editBtn.style.color = 'black'
 
+    const descSpan = document.createElement('span')
+    descSpan.id = 'desc'
+    descSpan.innerText = taskValue
+
+    const dateSpan = document.createElement('span')
+    dateSpan.id = 'date'
+    dateSpan.innerText = taskDate
+
     const newListElement = document.createElement('li');
     newListElement.id = `li${elementIdNum}`
     newListElement.style.color = taskColor
     newListElement.setAttribute('data-date', taskDate)
-    newListElement.innerHTML = taskValue + " " + "Due: " + " " + taskDate + " " + " " + editBtn.outerHTML + " " + deleteBtn.outerHTML;
+    newListElement.innerHTML = descSpan.outerHTML + " " + "Due: " + " " + dateSpan.outerHTML + "   " + editBtn.outerHTML + "  " + deleteBtn.outerHTML;
     todoList.appendChild(newListElement);
-    document.getElementById('new-task-description').value = ""
 
     document.querySelector(`BUTTON#editli${elementIdNum}`).addEventListener('click', editElement);
     document.querySelector(`BUTTON#li${elementIdNum}`).addEventListener('click', deleteElement);
 
     elementIdNum += 1
-    
+
+    document.getElementById('new-task-description').value = ""
+    document.getElementById('colors').value = ""
+    document.getElementById('task-date').value = ""
+    document.getElementById('submit').value = "Create New Task"
   });
   
   function editElement(event) {
-    console.log(event)
-    // Still working on this functionality - not yet sure how to implement...
+    // Get current todo data
+    const listItem = event.target.parentNode
+    const itemDesc = listItem.children[0].innerText
+    const itemStyle = listItem.style.color
+    const itemDate = listItem.children[1].innerText
+
+    // Populate new todo form with current data
+    document.getElementById('new-task-description').value = itemDesc
+    document.getElementById('colors').value = itemStyle
+    document.getElementById('task-date').value = itemDate
+
+    // Change Submit Button Text to "Save Changes"
+    document.getElementById('submit').value = "Save Changes"
+
+    // Remove existing todo item
+    
+    listItem.parentNode.removeChild(listItem)
+
   }
 
   function deleteElement(event) {
