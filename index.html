@@ -10,8 +10,22 @@
     <h1>Task Lister Lite™️</h1>
 
     <form id="create-task-form" action="#" method="post">
-      <label for="new-task-description">Task description:</label>
-      <input type="text" id="new-task-description" name="new-task-description" placeholder="description">
+      <p>
+        <label for="new-task-description">Task description:</label>
+        <input type="text" id="new-task-description" name="new-task-description" placeholder="description">
+      </p>
+      <p>
+        <label for="colors">Choose a Color:</label>
+        <select id='colors'>
+          <option value='green' style="color:green">Green</option>
+          <option value='yellow' style="color: yellow">Yellow</option>
+          <option value='red' style="color:red">Red</option>
+        </select>
+      </p>
+      <p>
+        <label for="task-date">Enter Due Date: </label>
+        <input type="date" id="task-date" name="task-date">
+      </p>
       <input type="submit" value="Create New Task">
     </form>
 
@@ -19,6 +33,7 @@
       <h2>My Todos</h2>
       <ul id="tasks">
       </ul>
+      <button id='sort-date'>Sort By Date</button>
     </div>
 
     <script src="./src/index.js"></script>
