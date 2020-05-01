@@ -1,18 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
   // your code here
-let counter = 0;
+let counter = 1;
 const taskForm = document.getElementById("create-task-form");
 
   function addTask() { 
     let taskList = document.getElementById("tasks");
     let newTaskDesc = document.getElementById("new-task-description");
     let newTaskPriority = document.getElementById("new-task-priority");
+    //Create new <li>
     const lineItem = document.createElement("li");
-
-    lineItem.textContent = `${newTaskDesc.value} in category: ${newTaskCat.value}`;
+    //Add description and Priority
+    lineItem.textContent = `${newTaskDesc.value} priority: ${newTaskPriority.value}`;
     lineItem.id = `item-${counter}`
-    taskList.appendChild(lineItem);
-
     //Add delete button
     let deleteButton = document.createElement("button");
     deleteButton.innerText = "x";
@@ -24,6 +23,11 @@ const taskForm = document.getElementById("create-task-form");
         // remove it
         buttonParent.remove();  
       });
+
+    //Add new Task to List
+    taskList.appendChild(lineItem);
+    
+    //Clear description
     newTaskDesc.value = "";
     counter += 1;
   };
