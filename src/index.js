@@ -4,16 +4,16 @@ let counter = 1;
 const taskForm = document.getElementById("create-task-form");
 
   function addTask() { 
-    let taskList = document.getElementById("tasks");
-    let newTaskDesc = document.getElementById("new-task-description");
-    let newTaskPriority = document.getElementById("new-task-priority");
+    const taskList = document.getElementById("tasks");
+    const newTaskDesc = document.getElementById("new-task-description");
+    const newTaskPriority = document.getElementById("new-task-priority");
     //Create new <li>
     const lineItem = document.createElement("li");
     //Add description and Priority
     lineItem.textContent = `${newTaskDesc.value} priority: ${newTaskPriority.value}`;
     lineItem.id = `item-${counter}`
     //Add delete button
-    let deleteButton = document.createElement("button");
+    const deleteButton = document.createElement("button");
     deleteButton.innerText = "x";
     lineItem.append(deleteButton);
     //Clicking button deletes current lineItem
@@ -29,6 +29,7 @@ const taskForm = document.getElementById("create-task-form");
     
     //Clear description
     newTaskDesc.value = "";
+    //newTaskDesc.target.reset
     counter += 1;
   };
 
